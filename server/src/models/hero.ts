@@ -1,19 +1,22 @@
-interface Hero {
-  id: number;
+import mongoose, { Schema, Document } from 'mongoose';
+
+interface IHero extends Document {
   name: string;
 }
 
-const heroes: Hero[] = [
+const HeroSchema: Schema = new mongoose.Schema(
   {
-    id: 0,
-    name: 'Mike'
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    }
   },
   {
-    id: 1,
-    name: 'Tiger'
+    timestamps: true
   }
-];
+);
 
-export function find(): Hero[] {
-  return heroes;
-}
+const Hero = mongoose.model<IHero>('Hero', HeroSchema);
+
+export { Hero };
