@@ -3,6 +3,8 @@ import { Hero } from '../models/hero';
 
 const router = Express.Router();
 
+// TODO: Fully CRUD support.
+
 router.get('/heroes', async (req: Request, res: Response) => {
   const queryName = req.query.name;
   console.log(`queryName=${queryName}`);

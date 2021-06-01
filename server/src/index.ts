@@ -1,8 +1,16 @@
 import Express, { json } from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import { heroRouter } from './routes/hero';
 
+const allowedOrigins = ['http://localhost:4200'];  // TODO
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins
+};
+
 const app = Express();
+app.use(cors(options));
 app.use(json());
 app.use(heroRouter);
 
