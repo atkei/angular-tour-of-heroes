@@ -33,4 +33,11 @@ router.post('/heroes', async (req: Request, res: Response) => {
   return res.status(201).send(newHero);
 });
 
+router.put('/heroes/:id', async (req: Request, res: Response) => {
+  const conditions: any = {};
+  conditions['_id'] = req.params.id;
+  const hero = await Hero.updateOne(conditions, req.body);
+  return res.status(200).send(hero);
+});
+
 export { router as heroRouter };
