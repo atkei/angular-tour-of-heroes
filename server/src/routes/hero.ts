@@ -30,14 +30,24 @@ router.get('/heroes/:id', async (req: Request, res: Response) => {
 router.post('/heroes', async (req: Request, res: Response) => {
   const newHero = new Hero(req.body);
   await newHero.save();
+  console.log(`Created: ${JSON.stringify(newHero)}`)
   return res.status(201).send(newHero);
 });
 
 router.put('/heroes/:id', async (req: Request, res: Response) => {
   const conditions: any = {};
   conditions['_id'] = req.params.id;
-  const hero = await Hero.updateOne(conditions, req.body);
-  return res.status(200).send(hero);
+  const result = await Hero.updateOne(conditions, req.body);
+  console.log(`Updated: ${JSON.stringify(result)}`)
+  return res.status(200).send(result);
+});
+
+router.delete('/heroes/:id', async (req: Request, res: Response) => {
+  const conditions: any = {};
+  conditions['_id'] = req.params.id;
+  const result = await Hero.deleteOne(conditions);
+  console.log(`Deleted: ${JSON.stringify(result)}`)
+  return res.status(200).send(result);
 });
 
 export { router as heroRouter };
