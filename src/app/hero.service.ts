@@ -4,7 +4,8 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import {environment} from "../environments/environment";
+import { environment } from "../environments/environment";
+import { Logger } from "./logger";
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,7 @@ export class HeroService {
       // If not search term, return empty hero array.
       return of([]);
     }
+    Logger.debug(`Search heroes term=${term}`);
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
       tap((x: Hero[]) => x.length ?
         this.log(`found heroes matching "${term}"`) :
