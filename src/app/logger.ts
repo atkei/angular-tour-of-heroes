@@ -9,11 +9,10 @@ enum LogLevel {
 export class Logger {
   static readonly debug = Logger.printFn(LogLevel.DEBUG);
   static readonly info = Logger.printFn(LogLevel.INFO);
-  static readonly error = Logger.printFn(LogLevel.ERROR);
+  static readonly error = console.error;
 
   private static printFn(logLevel: number) {
-    console.log(Number(LogLevel[environment.logLevel]));
-    if (typeof Number(LogLevel[environment.logLevel]) !== 'number') return console.log;
+    if (LogLevel[environment.logLevel] == null) return console.log;
     return (logLevel < Number(LogLevel[environment.logLevel])) ? Logger.doNothingFn : console.log;
   }
 
