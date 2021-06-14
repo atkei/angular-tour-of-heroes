@@ -6,8 +6,8 @@ declare const window: any;
 
 export const environment = {
   production: false,
-  apiUrl: window['env']['apiUrl'],
-  logLevel: window['env']['logLevel'],
+  apiUrl: window['env']['apiUrl'] || 'https://localhost:3000',
+  logLevel: window['env']['logLevel'] || 'DEBUG',
 };
 
 /*
