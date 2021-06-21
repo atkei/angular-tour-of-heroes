@@ -1,10 +1,8 @@
-# Angular Tour of Heroes with Server
+# Angular Tour of Heroes with Back-end Server
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
+## Run back-end server
 
-## Run Back-end server
-
-See [README.md](server/README.md).
+Look in `back_end` folder and [README.md](back_end/README.md).
 
 ## Development server
 

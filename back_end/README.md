@@ -2,19 +2,19 @@
 
 Install dependencies.
 
-```
-mpm i
+```shell
+npm i
 ```
 
 Start database.
 
-```
+```shell
 cd docker
-docer-compose up -d
+docker-compose up -d
 ```
 
 Start server.
 
-```
+```shell
 npm start
 ```
